@@ -1,0 +1,13 @@
+net: "models/alexnet/train_val.prototxt"
+base_lr: 0.0001
+lr_policy: "multistep"
+gamma: 0.1
+stepvalue: 60000
+stepvalue: 120000
+display: 20
+max_iter: 240000
+momentum: 0.9
+weight_decay: 0.00005
+snapshot: 3000
+snapshot_prefix: "models/alexnet/alexnet_dns"
+solver_mode: GPU

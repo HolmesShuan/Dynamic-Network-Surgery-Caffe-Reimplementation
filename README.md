@@ -130,7 +130,7 @@ Threshold | Sparsity
 ## Citation
 Basic idea comes from:
 ```
-@inproceedings{guo2016dynamic,		
+@inproceedings{guo2016dynamic,    
   title = {Dynamic Network Surgery for Efficient DNNs},
   author = {Guo, Yiwen and Yao, Anbang and Chen, Yurong},
   booktitle = {Advances in neural information processing systems (NIPS)},
