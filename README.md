@@ -22,7 +22,9 @@ $ ./build/tools/caffe test --weights /ModelPath/Ur.caffemodel --model /StructPat
 You can load standard pretrained caffemodel into this framework to fine-tuning(strongly recommend) or train from the begining(Remeber to set the `threshold` in `train_val.prototxt`, will be mentioned below).
 
 ### Examlpe for usage
+Standard Pretrained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
+
 **Pruned Layer**<br>
 ```
 layer {
