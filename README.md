@@ -1,5 +1,5 @@
 # Dynamic-Network-Surgery-Caffe-Reimplementation
-Personal Caffe reimplementation for dynamic network surgery(GPU-only).<br>
+Personal Caffe reimplementation for dynamic network surgery(GPU-only/cuDNN unsupported yet).<br>
 Official version is [Here (https://github.com/yiwenguo/Dynamic-Network-Surgery).](https://github.com/yiwenguo/Dynamic-Network-Surgery)<br>
 ## Main Differences:
 * We `didn't` prune the bias term.
@@ -12,7 +12,7 @@ It will be easier to reuse the exisiting `.prototxt file` from standard caffe fr
 ## How to use?
 The sames as the standard caffe framework.<br>
 ```
-$ make all -j8
+$ make all -j8 # USE_NCCL=1 make all -j8 for multi-GPU support
 $ ./build/tools/caffe train --weights /ModelPath/Ur.caffemodel --solver /SolverPath/solver.prototxt -gpu 0
 $ ./build/tools/caffe test --weights /ModelPath/Ur.caffemodel --model /StructPath/train_val.prototxt -gpu 0 -iterations 100
 # Please notice: 
