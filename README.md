@@ -24,6 +24,7 @@ You can load standard pretrained caffemodel into this framework to fine-tuning(s
 ### Examlpe for usage
 Standard Pretrained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
+Sparse(50%) convolutional layers `outperform` baseline.
 
 **Pruned Layer**<br>
 ```
@@ -125,7 +126,6 @@ Threshold | Sparsity
 1.281 | 80%
 1.644 | 90%
 1.959 | 95%
-
 
 ## Citation
 Basic idea comes from:
