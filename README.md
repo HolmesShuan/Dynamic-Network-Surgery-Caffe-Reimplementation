@@ -24,7 +24,7 @@ You can load standard pretrained caffemodel into this framework to fine-tuning(s
 ### Examlpe for usage
 Standard Pretrained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
-Sparse(50%) convolutional layers `outperform` baseline.
+Sparse(50%) convolutional layers will `outperform` baseline.
 
 **Pruned Layer**<br>
 ```
