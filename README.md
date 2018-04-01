@@ -1,30 +1,29 @@
 # Dynamic-Network-Surgery-Caffe-Reimplementation
-Personal Caffe reimplementation for dynamic network surgery(GPU-only/cuDNN unsupported yet).<br>
-Official version is [Here (https://github.com/yiwenguo/Dynamic-Network-Surgery).](https://github.com/yiwenguo/Dynamic-Network-Surgery)<br>
+Caffe reimplementation of dynamic network surgery(GPU-only/cuDNN unsupported yet).<br>
+Official version at [Here (https://github.com/yiwenguo/Dynamic-Network-Surgery).](https://github.com/yiwenguo/Dynamic-Network-Surgery)<br>
 ## Main Differences:
 * We `didn't` prune the bias term.
 * We make the selection of hyperparameter clear and convincing. (May `differ` from official version but more `readable`)
-* We readjust the organization of the code.<br> 
-You may `monitor the change of total sparsity` of convolutional layers and innerproduct layers.
-* We rewrite the original convolutional layer and innerproduct layer instead of creating some new classes.<br>
-It will be easier to reuse the exisiting `.prototxt file` from standard caffe framework. 
+* We re-adjust the organization of the code.<br> 
+You may `monitor the change of weights sparsity` of convolutional layers and innerproduct layers.
+* We re-write the original convolutional layer and innerproduct layer instead of creating new classes.<br>
+It will be easier to reuse the exisiting `.prototxt` of standard Caffe framework. 
 
-## How to use?
-The sames as the standard caffe framework.<br>
+## How to use ?
+The sames as the standard Caffe framework.<br>
 ```
 $ make all -j8 # USE_NCCL=1 make all -j8 for multi-GPU support
 $ ./build/tools/caffe train --weights /ModelPath/Ur.caffemodel --solver /SolverPath/solver.prototxt -gpu 0
 $ ./build/tools/caffe test --weights /ModelPath/Ur.caffemodel --model /StructPath/train_val.prototxt -gpu 0 -iterations 100
 # Please notice: 
 # CPU Version is not supported yet, but you may find it quite easy to rewrite conv_layer.cpp and innerproduct_layer.cpp from .cu files.
-# We will upload our .cpp recently.
 ```
-You can load standard pretrained caffemodel into this framework to fine-tuning(strongly recommend) or train from the begining(Remeber to set the `threshold` in `train_val.prototxt`, will be mentioned below).
+You can load pre-trained caffemodel into this framework to fine-tune (strongly recommend) or re-train from the begining (Remember to set the `threshold` in `train_val.prototxt`, which will be mentioned below).
 
-### Examlpe for usage
-Standard Pretrained Caffemodel:<br>
+### Usage Example :
+Pre-trained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
-Sparse(50%) convolutional layers will `outperform` baseline.
+Sparse (50%) convolution layers will `outperform` baseline.
 
 **Pruned Layer**<br>
 ```
@@ -68,7 +67,7 @@ layer {
   }
 }
 ```
-**Unpruned Layer**
+**Dense Layer**
 ```
 layer {
   name: "fc6"
@@ -126,7 +125,7 @@ Threshold | Sparsity
 1.281 | 80%
 1.644 | 90%
 1.959 | 95%
-
+ 
 ## Citation
 Basic idea comes from:
 ```
