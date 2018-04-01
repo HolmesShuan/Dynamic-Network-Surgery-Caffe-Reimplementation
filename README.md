@@ -6,7 +6,7 @@ Official version at [Here (https://github.com/yiwenguo/Dynamic-Network-Surgery).
 * We make the selection of hyperparameter clear and convincing. (May `differ` from official version but more `readable`)
 * We re-adjust the organization of the code.<br> 
 You may `monitor the change of weights sparsity` of convolutional layers and innerproduct layers.
-* We re-write the original convolutional layer and innerproduct layer instead of creating new classes.<br>
+* We re-write the original convolution layer and innerproduct layer instead of creating new classes.<br>
 It will be easier to reuse the exisiting `.prototxt` of standard Caffe framework. 
 
 ## How to use ?
@@ -23,7 +23,7 @@ You can load pre-trained caffemodel into this framework to fine-tune (strongly r
 ### Usage Example :
 Pre-trained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
-Sparse (50%) convolution layers will `outperform` baseline.
+Sparse (50%) convolution layers should `outperform` baseline.
 
 **Pruned Layer**<br>
 ```
@@ -114,8 +114,8 @@ surgery_iter_gamma: 0.0001 ## [default 1e-4] Probability(do surgery) = (1+gamma*
 surgery_iter_power: 1 ## [default 1] 
 ```
 ## Tips
-1. The value of threshold is pretty tricky. It may differ a lot between different layers.
-2. If you facing the vanishing gradient problem, try to adjust `gamma` and `power`. <br>
+1. The selection of threshold is pretty tricky. It may differ a lot between different layers.
+2. If you encounter the vanishing gradient problem, then you could adjust `gamma` and `power` in `solver.prototxt`. <br>
 Multiple attempts failed, then reduce `threshold`. 
 
 Threshold | Sparsity
