@@ -23,7 +23,7 @@ You may load pre-trained caffemodel into this framework to fine-tune (highly rec
 ### Usage Example :
 Pre-trained Caffemodel:<br>
 [AlexNet with BN (https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)](https://github.com/HolmesShuan/AlexNet-BN-Caffemodel-on-ImageNet)<br>
-Sparse (50%) convolution layers should `outperform` baseline.
+Sparse (50%) convolution layers should `outperform` the full-precison baseline.
 
 **Pruned Layer**<br>
 ```
@@ -42,7 +42,6 @@ layer {
   }
   # weight_mask param
   param {
-    ## Indispensable !!!!
     lr_mult: 0
     decay_mult: 0
   }
