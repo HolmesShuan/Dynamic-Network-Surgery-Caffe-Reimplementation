@@ -1,16 +1,16 @@
 # Dynamic-Network-Surgery-Caffe-Reimplementation
 Caffe reimplementation of dynamic network surgery(GPU-only/cuDNN unsupported yet).<br>
-Official version at [Here (https://github.com/yiwenguo/Dynamic-Network-Surgery).](https://github.com/yiwenguo/Dynamic-Network-Surgery)<br>
+Official repo at [here (https://github.com/yiwenguo/Dynamic-Network-Surgery).](https://github.com/yiwenguo/Dynamic-Network-Surgery)<br>
 ## Main Differences:
 * We `didn't` prune the bias term.
-* We make the selection of hyperparameter clear and convincing. (May `differ` from official version but more `readable`)
-* We re-adjust the organization of the code.<br> 
-You may `monitor the change of weights sparsity` of convolutional layers and innerproduct layers.
-* We re-write the original convolution layer and innerproduct layer instead of creating new classes.<br>
-It will be easier to reuse the exisiting `.prototxt` of standard Caffe framework. 
+* We make the selection of hyper-parameters more clear and intuitive.
+* We re-adjust the organization of the codes.<br> 
+You may `monitor the change of weights sparsity` of convolution layers and fully-connected layers during training.
+* We re-write the original convolution layer and inner-product layer instead of creating new classes.<br>
+It will be easier to reuse the existing `.prototxt` without modifying the layer types. 
 
 ## How to use ?
-The sames as the standard Caffe framework.<br>
+The sames as the original Caffe framework.<br>
 ```
 $ make all -j8 # USE_NCCL=1 make all -j8 for multi-GPU support
 $ ./build/tools/caffe train --weights /ModelPath/Ur.caffemodel --solver /SolverPath/solver.prototxt -gpu 0
@@ -18,7 +18,7 @@ $ ./build/tools/caffe test --weights /ModelPath/Ur.caffemodel --model /StructPat
 # Please notice: 
 # CPU Version is not supported yet, but you may find it quite easy to rewrite conv_layer.cpp and innerproduct_layer.cpp from .cu files.
 ```
-You can load pre-trained caffemodel into this framework to fine-tune (strongly recommend) or re-train from the begining (Remember to set the `threshold` in `train_val.prototxt`, which will be mentioned below).
+You may load pre-trained caffemodel into this framework to fine-tune (highly recommended) or re-train from the begining (remember to set the `threshold` in `train_val.prototxt`, which will be mentioned below).
 
 ### Usage Example :
 Pre-trained Caffemodel:<br>
@@ -115,8 +115,8 @@ surgery_iter_power: 1 ## [default 1]
 ```
 ## Tips
 1. The selection of threshold is pretty tricky. It may differ a lot between different layers.
-2. If you encounter the vanishing gradient problem, then you could adjust `gamma` and `power` in `solver.prototxt`. <br>
-Multiple attempts failed, then reduce `threshold`. 
+2. If you encounter the vanishing gradient problem, then adjust `gamma` and `power` in `solver.prototxt`. <br>
+If multiple attempts failed, then you may reduce the `threshold` based on the 68-95-99.7 rule. 
 
 Threshold | Sparsity
 ------------ | -------------
